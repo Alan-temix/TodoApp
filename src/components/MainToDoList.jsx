@@ -7,7 +7,7 @@ import ToDoListContext from '../context/ToDoListContext';
 
 const MainToDoList = () => {
     const { task } = useContext(ToDoListContext);
-    console.log(task);
+
     return(
         <Card className="main__container">
         <Card.Header className="text-start"><h3>All</h3></Card.Header>

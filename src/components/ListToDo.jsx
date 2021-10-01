@@ -6,13 +6,13 @@ const ListToDo = ({id, task, status}) => {
 
     const setBorderColor = (statusToDo) => {
         switch(statusToDo) {
-            case "Complete":
+            case "completed":
                 return "green";
-            case "Not completed":
+            case "not-completed":
                 return "purple";
-            case "In Progress":
+            case "in-progress":
                 return "blue";
-            case "Trashed":
+            case "trashed":
                 return "red";
             default:
                 return "yellow";

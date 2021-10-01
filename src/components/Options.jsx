@@ -1,9 +1,18 @@
-import React, {useState} from "react";
+import React, {useState, useContext} from "react";
 import { Card, Button, ListGroup, ListGroupItem } from "react-bootstrap";
+
+// Context
+import ToDoListContext from '../context/ToDoListContext';
 
 const Options = () => {
     const [optionChoose, setOptionChoose] = useState("All");
+    const { task } = useContext(ToDoListContext);
     
+    const amountInCategory = (arr, param) => {
+        const result = arr.filter(task => task.status === param);
+        return result.length;
+    }
+
     return(
         <div className="options col-md-3">
             <Card className="options__cover text-light text-start border-0 px-3 mb-4" style={{height: '13rem' }}>
@@ -25,11 +34,11 @@ const Options = () => {
                     <Card.Title>Roadmap</Card.Title>
                 </Card.Body>
                 <ListGroup className="list-group-flush">
-                    <ListGroupItem className="border-0 ms-3 d-flex justify-content-between"><li className="ut-gold"><span>All</span></li><span>#2</span></ListGroupItem>
-                    <ListGroupItem className="border-0 ms-3 d-flex justify-content-between"><li className="ut-green"><span>Completed</span></li><span>#2</span></ListGroupItem>
-                    <ListGroupItem className="border-0 ms-3 d-flex justify-content-between"><li className="ut-purple"><span>Not Completed</span></li><span>#2</span></ListGroupItem>
-                    <ListGroupItem className="border-0 ms-3 d-flex justify-content-between"><li className="ut-blue"><span>In Progress</span></li><span>#2</span></ListGroupItem>
-                    <ListGroupItem className="border-0 ms-3 d-flex justify-content-between"><li className="ut-red"><span>Trashed</span></li><span>#2</span></ListGroupItem>
+                    <ListGroupItem className="border-0 ms-3 d-flex justify-content-between"><li className="ut-gold"><span>All</span></li><span>{task.length}</span></ListGroupItem>
+                    <ListGroupItem className="border-0 ms-3 d-flex justify-content-between"><li className="ut-green"><span>Completed</span></li><span>{amountInCategory(task, "completed")}</span></ListGroupItem>
+                    <ListGroupItem className="border-0 ms-3 d-flex justify-content-between"><li className="ut-purple"><span>Not Completed</span></li><span>{amountInCategory(task, "not-completed")}</span></ListGroupItem>
+                    <ListGroupItem className="border-0 ms-3 d-flex justify-content-between"><li className="ut-blue"><span>In Progress</span></li><span>{amountInCategory(task, "in-progress")}</span></ListGroupItem>
+                    <ListGroupItem className="border-0 ms-3 d-flex justify-content-between"><li className="ut-red"><span>Trashed</span></li><span>{amountInCategory(task, "trashed")}</span></ListGroupItem>
                 </ListGroup>
             </Card>
         </div>

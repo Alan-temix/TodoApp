@@ -4,7 +4,6 @@ import './styles/utilities.css';
 import Options from './components/Options';
 import AddToDo from './components/AddToDo';
 import MainToDoList from './components/MainToDoList';
-import { useEffect, useState } from "react";
 
 // Context
 import { ToDoListProvider } from './context/ToDoListContext';

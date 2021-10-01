@@ -1,4 +1,4 @@
-import React, { useState, createContext } from 'react';
+import React, {useState, createContext } from 'react';
 import listaTodo from '../listaTodo';
 
 const ToDoListContext = createContext();
@@ -6,14 +6,14 @@ const ToDoListContext = createContext();
 const ToDoListProvider = ({children}) => {
     const [task, setTask] = useState(listaTodo);
 
-    const data = { task: task }
+    const data = { task: task };
 
     return(
-    <ToDoListContext.Provider value={data} >
-        {children}
-    </ToDoListContext.Provider>
-    );
+        <ToDoListContext.Provider value={data}>
+            {children}
+        </ToDoListContext.Provider>
+    )
 }
 
-export { ToDoListProvider }
+export { ToDoListProvider };
 export default ToDoListContext;
