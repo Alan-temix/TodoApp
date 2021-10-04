@@ -27,7 +27,7 @@ const ToDoListProvider = ({children}) => {
     }
 
     const deleteTask = (identify) => {
-        const i = task.map(element => element.id).indexOf(identify);
+        //const i = task.map(element => element.id).indexOf(identify);
         const newArray = task.filter(element => element.id !== identify)
         setTask(newArray);
     }
