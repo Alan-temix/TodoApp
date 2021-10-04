@@ -52,4 +52,19 @@
     padding: 0;
     flex-direction: column;
   }
+
+  .options__cover {
+    height: auto;
+    border-radius: 0 !important;
+  }
+
+  .main {
+    margin: 0 20px !important;
+  }
+
+  .options__buttons,
+  .options__roadmap,
+  .list-group-flush {
+    margin: 20px
+  }
 }

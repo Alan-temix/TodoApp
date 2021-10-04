@@ -2,27 +2,27 @@ const ToDo = [
     {
         id: 1,
         task: "Acomodar mi cama ",
-        status: "not-completed"
+        status: "Not Completed"
     },
     {
         id: 2,
         task: "Desayunar",
-        status: "completed"
+        status: "Completed"
     },
     {
         id: 3,
         task: "Estudiar Vanilla JavaScript",
-        status: "not-completed"
+        status: "Not Completed"
     },
     {
         id: 4,
         task: "Dar de comer a mi cachorro",
-        status: "in-progress"
+        status: "In Progress"
     },
     {
         id: 5,
         task: "Hacer ejercicio",
-        status: "trashed"
+        status: "Trash"
     }
 ];
 

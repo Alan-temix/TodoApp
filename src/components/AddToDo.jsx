@@ -1,9 +1,10 @@
 
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import { Accordion, Card, useAccordionButton, Button, Row, Col, Form } from "react-bootstrap";
+import ToDoListContext from '../context/ToDoListContext';
 
 const CustomToggle = ({ children, eventKey }) => {
     const [textInBotton, setTextInBotton] = useState("Add");
@@ -24,6 +25,17 @@ const CustomToggle = ({ children, eventKey }) => {
   }
   
 const AddToDo = () => {
+    const { createNewTask } = useContext(ToDoListContext);
+    const [textInput, setTextInput] = useState("");
+
+    const handleOnSubmit = (e) => {
+        e.preventDefault();
+        createNewTask(textInput)
+    }
+
+    const handleChangeInput = (e) => {
+        setTextInput(e.target.value);
+    }
 
     return (
     <div className="main__add mb-4">
@@ -34,13 +46,13 @@ const AddToDo = () => {
                     <CustomToggle eventKey="1"></CustomToggle>
                 </Card.Header>
                 <Accordion.Collapse eventKey="1">
-                    <Form className="px-3" style={{backgroundColor: "white"}}>
+                    <Form className="px-3" style={{backgroundColor: "white"}} onSubmit={handleOnSubmit} >
                     <Row className="align-items-center">
                         <Col className="my-3">
                             <Form.Label htmlFor="inlineFormInputName" visuallyHidden>
                                 New to do
                             </Form.Label>
-                            <Form.Control id="inlineFormInputName" placeholder="Example: Buy Milk" />
+                            <Form.Control id="inlineFormInputName" placeholder="Example: Buy Milk" onChange={handleChangeInput} />
                             </Col>
                             <Col xs="auto" className="my-3 pe-2">
                             <Button type="submit"><FontAwesomeIcon icon={faPlus} /></Button>

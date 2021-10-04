@@ -1,14 +1,14 @@
 /* Customize styles */
 
 .options__buttons {
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 50% 50%;
   }
 
 .options__cover {
   background: #12c2e9;  /* fallback for old browsers */
   background: -webkit-linear-gradient(to right, #12c2e9, #c471ed, #f64f59);  /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to right, #12c2e9, #c471ed, #f64f59); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-/* #12c2e9, #c471ed, #f64f59, */
+  height: 13rem;
 }
 
 .options__buttons button {
@@ -28,6 +28,10 @@
 }
 
 /*  */
+
+.main {
+  margin-left: 2em;
+}
 
 .main__add .card {
   background-color: #373e68;
