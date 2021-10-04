@@ -41,12 +41,16 @@ const ListToDo = ({id, task, status, changeStatusOnTask, deleteTask}) => {
                 <Card.Title>{task}</Card.Title>
                 <div className="main-list__buttons--display">
                     {
-                        status === "Trash" ? (<><Button variant="success" className="mx-1" onClick={handleRestore}><FontAwesomeIcon icon={faTrashRestoreAlt} size="2x" /></Button><Button variant="warning" className="mx-1" onClick={handleDeletePermanently}><FontAwesomeIcon icon={faDumpster} size="2x" /></Button></>) : (
+                        status === "Trash" ? (
+                        <>
+                        <Button variant="success" className="mx-1" onClick={handleRestore}><FontAwesomeIcon icon={faTrashRestoreAlt} size="2x" /></Button>
+                        <Button variant="warning" className="mx-1" onClick={handleDeletePermanently}><FontAwesomeIcon icon={faDumpster} size="2x" /></Button>
+                        </>
+                        ) : (
                         <>
                         <Button variant="success" className="mx-1" onClick={handleToComplete}><FontAwesomeIcon icon={faCheckSquare} size="2x" /></Button>
                         <Button variant="info" className="mx-1" onClick={handleInProgress}><FontAwesomeIcon icon={faCircleNotch} size="2x" /></Button>
                         <Button variant="danger" className="mx-1" onClick={handleMoveToTrash}><FontAwesomeIcon icon={faTrash} size="2x" /></Button>
-
                         </>
                         )
                     }
@@ -55,11 +59,21 @@ const ListToDo = ({id, task, status, changeStatusOnTask, deleteTask}) => {
                         <Dropdown.Toggle style={{backgroundColor: "#ad1eeb"}} id="dropdown-basic">
                         Options
                         </Dropdown.Toggle>
-
                         <Dropdown.Menu>
-                            <Dropdown.Item onClick={handleToComplete}>Complete</Dropdown.Item>
-                            <Dropdown.Item onClick={handleInProgress}>In Progress</Dropdown.Item>
-                            <Dropdown.Item onClick={handleMoveToTrash}>Move to Trash</Dropdown.Item>
+                            {
+                                status === "Trash" ? (
+                                    <>
+                                    <Dropdown.Item onClick={handleRestore}>Restore</Dropdown.Item>
+                                    <Dropdown.Item onClick={handleDeletePermanently}>Delete</Dropdown.Item>
+                                    </>
+                                ) : (
+                                    <>
+                                    <Dropdown.Item onClick={handleToComplete}>Complete</Dropdown.Item>
+                                    <Dropdown.Item onClick={handleInProgress}>In Progress</Dropdown.Item>
+                                    <Dropdown.Item onClick={handleMoveToTrash}>Move to Trash</Dropdown.Item>
+                                    </>
+                                )
+                            }
                         </Dropdown.Menu>
                     </Dropdown>
             </Card.Body>
