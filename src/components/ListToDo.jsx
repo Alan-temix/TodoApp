@@ -1,6 +1,6 @@
 import { Card, Button, Dropdown } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheckSquare, faCircleNotch, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faCheckSquare, faCircleNotch, faTrash, faDumpster, faTrashRestoreAlt } from '@fortawesome/free-solid-svg-icons';
 
 const ListToDo = ({id, task, status, changeStatusOnTask, deleteTask}) => {
 
@@ -28,6 +28,9 @@ const ListToDo = ({id, task, status, changeStatusOnTask, deleteTask}) => {
     const handleMoveToTrash = () => {
         changeStatusOnTask(id, "Trash");
     }
+    const handleRestore = () => {
+        changeStatusOnTask(id, "Not Completed");
+    }
     const handleDeletePermanently = () => {
         deleteTask(id)
     }
@@ -35,11 +38,18 @@ const ListToDo = ({id, task, status, changeStatusOnTask, deleteTask}) => {
     return (
         <Card className="main-list mb-2" style={{border: `2px solid ${setBorderColor(status)}`}}>
             <Card.Body className="d-flex justify-content-between align-items-center">
-                <Card.Title>{task} - {id}</Card.Title>
+                <Card.Title>{task}</Card.Title>
                 <div className="main-list__buttons--display">
-                    <Button variant="success" className="h-50 mx-1" onClick={handleToComplete}><FontAwesomeIcon icon={faCheckSquare} size="2x" /></Button>
-                    <Button variant="info" className="h-50 mx-1" onClick={handleInProgress}><FontAwesomeIcon icon={faCircleNotch} size="2x" /></Button>
-                    <Button variant="danger" className="h-50 mx-1" onClick={handleDeletePermanently}><FontAwesomeIcon icon={faTrash} size="2x" /></Button>
+                    {
+                        status === "Trash" ? (<><Button variant="success" className="mx-1" onClick={handleRestore}><FontAwesomeIcon icon={faTrashRestoreAlt} size="2x" /></Button><Button variant="warning" className="mx-1" onClick={handleDeletePermanently}><FontAwesomeIcon icon={faDumpster} size="2x" /></Button></>) : (
+                        <>
+                        <Button variant="success" className="mx-1" onClick={handleToComplete}><FontAwesomeIcon icon={faCheckSquare} size="2x" /></Button>
+                        <Button variant="info" className="mx-1" onClick={handleInProgress}><FontAwesomeIcon icon={faCircleNotch} size="2x" /></Button>
+                        <Button variant="danger" className="mx-1" onClick={handleMoveToTrash}><FontAwesomeIcon icon={faTrash} size="2x" /></Button>
+
+                        </>
+                        )
+                    }
                 </div>
                 <Dropdown className="d-md-none">
                         <Dropdown.Toggle style={{backgroundColor: "#ad1eeb"}} id="dropdown-basic">

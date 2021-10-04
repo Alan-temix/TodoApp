@@ -20,12 +20,16 @@ const ToDoListProvider = ({children}) => {
     
     const changeStatusOnTask = (identify, s) => {
         const i = task.map(element => element.id).indexOf(identify);
-        task[i].status = s;
+        //task[i].status = s;
+        //setTask([...task, task[i].status = s]); <- Este por alguna razon cambia el estado pero agrega un nuevo elemento al arreglo y lo pone al estado de s
+        setTask([...task], task[i].status = s);
+
     }
 
     const deleteTask = (identify) => {
         const i = task.map(element => element.id).indexOf(identify);
-        task.splice(i, 1);
+        const newArray = task.filter(element => element.id !== identify)
+        setTask(newArray);
     }
 
     const data = { 
