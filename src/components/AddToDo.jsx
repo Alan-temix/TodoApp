@@ -31,9 +31,17 @@ const AddToDo = () => {
 
     const handleOnSubmit = (e) => {
         e.preventDefault();
+        const alertComponent = () => {
+            return(
+                <div className="pb-1">
+                <p className="text-danger">*You must write a valid to do*.{' '}
+                <strong>No empty tasks</strong>. Try Again.
+                </p>
+                </div>
+            )
+        }
         if(textInput[0] === " ") {
-            setMessage("*You must write a valid to do*.");
-            //createNewTask(textInput)
+            setMessage(alertComponent);
         } else {
             setMessage("");
             createNewTask(textInput)

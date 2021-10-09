@@ -20,7 +20,7 @@ const Options = ({changeType}) => {
                     <Card.Subtitle className="mb-2 fw-bold">List of things to do</Card.Subtitle>
                 </Card.Body>
             </Card>
-            <Card className="options__buttons d-grid border-0 mb-4">
+            <Card className="options__buttons d-grid border-0 mb-4" style={{backgroundColor: "inherit"}}>
                 <Button className="rounded-3" variant="primary" onClick={() => changeType("All")}>All</Button>
                 <Button className="rounded-3" variant="primary" onClick={() => changeType("Completed")}>Completed</Button>
                 <Button className="rounded-3" variant="primary" onClick={() => changeType("Not Completed")}>Not Completed</Button>
