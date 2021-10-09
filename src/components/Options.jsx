@@ -32,7 +32,7 @@ const Options = ({changeType}) => {
                     <Card.Title>Roadmap</Card.Title>
                 </Card.Body>
                 <ListGroup className="list-group-flush">
-                    <ListGroupItem className="border-0 ms-3 d-flex justify-content-between"><li className="ut-gold"><span>All</span></li><span>{task.length}</span></ListGroupItem>
+                    <ListGroupItem className="border-0 d-flex justify-content-between"><h6>All</h6><span>{task.length}</span></ListGroupItem><hr className="my-0" />
                     <ListGroupItem className="border-0 ms-3 d-flex justify-content-between"><li className="ut-green"><span>Completed</span></li><span>{amountInCategory(task, "Completed")}</span></ListGroupItem>
                     <ListGroupItem className="border-0 ms-3 d-flex justify-content-between"><li className="ut-purple"><span>Not Completed</span></li><span>{amountInCategory(task, "Not Completed")}</span></ListGroupItem>
                     <ListGroupItem className="border-0 ms-3 d-flex justify-content-between"><li className="ut-blue"><span>In Progress</span></li><span>{amountInCategory(task, "In Progress")}</span></ListGroupItem>

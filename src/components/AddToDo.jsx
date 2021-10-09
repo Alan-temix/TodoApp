@@ -27,10 +27,17 @@ const CustomToggle = ({ children, eventKey }) => {
 const AddToDo = () => {
     const { createNewTask } = useContext(ToDoListContext);
     const [textInput, setTextInput] = useState("");
+    const [message, setMessage] = useState("");
 
     const handleOnSubmit = (e) => {
         e.preventDefault();
-        createNewTask(textInput)
+        if(textInput[0] === " ") {
+            setMessage("*You must write a valid to do*.");
+            //createNewTask(textInput)
+        } else {
+            setMessage("");
+            createNewTask(textInput)
+        }
     }
 
     const handleChangeInput = (e) => {
@@ -52,12 +59,13 @@ const AddToDo = () => {
                             <Form.Label htmlFor="inlineFormInputName" visuallyHidden>
                                 New to do
                             </Form.Label>
-                            <Form.Control id="inlineFormInputName" placeholder="Example: Buy Milk" onChange={handleChangeInput} />
+                            <Form.Control id="inlineFormInputName" placeholder="Example: Buy Milk" onChange={handleChangeInput} required />
                             </Col>
                             <Col xs="auto" className="my-3 pe-2">
                             <Button type="submit"><FontAwesomeIcon icon={faPlus} /></Button>
                         </Col>
                     </Row>
+                    {message}
                     </Form>
                 </Accordion.Collapse>
             </Card>

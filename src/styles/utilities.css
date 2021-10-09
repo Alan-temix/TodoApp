@@ -19,3 +19,24 @@
   color: red;
 }
 /*  */
+
+.ut-status-InProgress {
+  background-color: #14279B !important;
+  color: white;
+}
+
+.ut-status-NotCompleted {
+  background-color: #C32BAD !important;
+  color: white;
+}
+
+.ut-status-Completed {
+  background-color: green !important;
+  color: white;
+}
+
+.ut-status-Trash {
+  background-color: #E02401!important;
+  opacity: 0.8;
+  color: white;
+}

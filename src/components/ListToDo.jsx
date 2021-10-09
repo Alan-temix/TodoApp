@@ -7,15 +7,15 @@ const ListToDo = ({id, task, status, changeStatusOnTask, deleteTask}) => {
     const setBorderColor = (statusToDo) => {
         switch(statusToDo) {
             case "Completed":
-                return "green";
+                return "ut-status-Completed";
             case "Not Completed":
-                return "purple";
+                return "ut-status-NotCompleted";
             case "In Progress":
-                return "blue";
+                return "ut-status-InProgress";
             case "Trash":
-                return "red";
+                return "ut-status-Trash";
             default:
-                return "yellow";
+                return "";
         }
     }
 
@@ -36,9 +36,9 @@ const ListToDo = ({id, task, status, changeStatusOnTask, deleteTask}) => {
     }
 
     return (
-        <Card className="main-list mb-2" style={{border: `2px solid ${setBorderColor(status)}`}}>
+        <Card className={`main-list mb-2 ${setBorderColor(status)}`}>
             <Card.Body className="d-flex justify-content-between align-items-center">
-                <Card.Title>{task}</Card.Title>
+                <Card.Title><i style={{textAlign: "left", display: "block", fontSize: ".7em"}}>{status}</i>{task}</Card.Title>
                 <div className="main-list__buttons--display">
                     {
                         status === "Trash" ? (
@@ -56,7 +56,7 @@ const ListToDo = ({id, task, status, changeStatusOnTask, deleteTask}) => {
                     }
                 </div>
                 <Dropdown className="d-md-none">
-                        <Dropdown.Toggle style={{backgroundColor: "#ad1eeb"}} id="dropdown-basic">
+                        <Dropdown.Toggle style={{backgroundColor: "black", color: "white", border: "none"}} id="dropdown-basic">
                         Options
                         </Dropdown.Toggle>
                         <Dropdown.Menu>
