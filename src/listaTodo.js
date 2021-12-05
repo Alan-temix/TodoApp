@@ -17,7 +17,7 @@ const ToDo = [
     {
         id: 4,
         task: "Dar de comer a mi cachorro",
-        status: "In Progress"
+        status: "Not Completed"
     },
     {
         id: 5,

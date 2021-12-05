@@ -1,15 +1,28 @@
-import React, {useState, createContext } from 'react';
-import listaTodo from '../listaTodo';
+import React, {useState, useEffect, createContext } from 'react';
+// import listaTodo from '../listaTodo';
 
 const ToDoListContext = createContext();
 
 const ToDoListProvider = ({children}) => {
-    const [task, setTask] = useState(listaTodo);
-    let index = Object.values(task).length + 1;
-    console.log(task);
+    // const [task, setTask] = useState(listaTodo);
+    const [task, setTask] = useState([]);
+    let index = task.length > 0 ? Object.values(task).length + 1 : 0
+    // console.log(task);
+
+    useEffect(() => {
+        if(JSON.parse(localStorage.getItem("todoList"))) {
+            setTask(JSON.parse(localStorage.getItem("todoList")));
+        } else {
+            setTask(localStorage.setItem("todoList", JSON.stringify([])))
+        }
+    }, []);
+
+    useEffect(() => {
+        localStorage.setItem("todoList", JSON.stringify(task));
+      }, [task]);    
 
     const createNewTask = (t) => {
-        // Codigo para crear uevas tareas
+        // Codigo para crear nuevas tareas
         setTask([...task,
             {
                 id: index++,
@@ -23,7 +36,6 @@ const ToDoListProvider = ({children}) => {
         //task[i].status = s;
         //setTask([...task, task[i].status = s]); <- Este por alguna razon cambia el estado pero agrega un nuevo elemento al arreglo y lo pone al estado de s
         setTask([...task], task[i].status = s);
-
     }
 
     const deleteTask = (identify) => {

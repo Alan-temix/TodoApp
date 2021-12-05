@@ -14,6 +14,7 @@ const MainToDoList = ({type}) => {
         <Card.Header className="text-start"><h3>{type}</h3></Card.Header>
         <Card.Body>
             {
+                showList.length > 0 ? (
                 showList.sort((a, b) => {
                     if(a.id === b.id) {
                         return 0;
@@ -22,7 +23,10 @@ const MainToDoList = ({type}) => {
                         return -1;
                     }
                     return 1;
-                }).map((item, index) => (<ListToDo key={index} id={item.id} task={item.task} status={item.status} changeStatusOnTask={changeStatusOnTask} deleteTask={deleteTask} />))
+                }).map((item, index) => (<ListToDo key={index} id={item.id} task={item.task} status={item.status} changeStatusOnTask={changeStatusOnTask} deleteTask={deleteTask} />)) 
+                ) : (
+                    "Congratulations! doesnt have task incomplete"
+                )
             }
         </Card.Body>
         </Card>

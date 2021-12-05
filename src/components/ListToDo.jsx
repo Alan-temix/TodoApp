@@ -1,6 +1,6 @@
 import { Card, Button, Dropdown } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheckSquare, faCircleNotch, faTrash, faDumpster, faTrashRestoreAlt } from '@fortawesome/free-solid-svg-icons';
+import { faCheckSquare, faTrash, faDumpster, faTrashRestoreAlt } from '@fortawesome/free-solid-svg-icons';
 
 const ListToDo = ({id, task, status, changeStatusOnTask, deleteTask}) => {
 
@@ -21,9 +21,6 @@ const ListToDo = ({id, task, status, changeStatusOnTask, deleteTask}) => {
 
     const handleToComplete = () => {
         changeStatusOnTask(id, "Completed");
-    }
-    const handleInProgress = () => {
-        changeStatusOnTask(id, "In Progress");
     }
     const handleMoveToTrash = () => {
         changeStatusOnTask(id, "Trash");
@@ -49,7 +46,6 @@ const ListToDo = ({id, task, status, changeStatusOnTask, deleteTask}) => {
                         ) : (
                         <>
                         <Button variant="success" className="mx-1" onClick={handleToComplete}><FontAwesomeIcon icon={faCheckSquare} size="2x" /></Button>
-                        <Button variant="info" className="mx-1" onClick={handleInProgress}><FontAwesomeIcon icon={faCircleNotch} size="2x" /></Button>
                         <Button variant="danger" className="mx-1" onClick={handleMoveToTrash}><FontAwesomeIcon icon={faTrash} size="2x" /></Button>
                         </>
                         )
@@ -69,7 +65,6 @@ const ListToDo = ({id, task, status, changeStatusOnTask, deleteTask}) => {
                                 ) : (
                                     <>
                                     <Dropdown.Item onClick={handleToComplete}>Complete</Dropdown.Item>
-                                    <Dropdown.Item onClick={handleInProgress}>In Progress</Dropdown.Item>
                                     <Dropdown.Item onClick={handleMoveToTrash}>Move to Trash</Dropdown.Item>
                                     </>
                                 )

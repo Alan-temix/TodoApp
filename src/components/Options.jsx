@@ -24,7 +24,6 @@ const Options = ({changeType}) => {
                 <Button className="rounded-3" variant="primary" onClick={() => changeType("All")}>All</Button>
                 <Button className="rounded-3" variant="primary" onClick={() => changeType("Completed")}>Completed</Button>
                 <Button className="rounded-3" variant="primary" onClick={() => changeType("Not Completed")}>Not Completed</Button>
-                <Button className="rounded-3" variant="primary" onClick={() => changeType("In Progress")}>In Progress</Button>
                 <Button className="rounded-3" variant="danger" onClick={() => changeType("Trash")}>Trash</Button>
             </Card>
             <Card className="options__roadmap mb-4">
@@ -35,7 +34,6 @@ const Options = ({changeType}) => {
                     <ListGroupItem className="border-0 d-flex justify-content-between"><h6>All</h6><span>{task.length}</span></ListGroupItem><hr className="my-0" />
                     <ListGroupItem className="border-0 ms-3 d-flex justify-content-between"><li className="ut-green"><span>Completed</span></li><span>{amountInCategory(task, "Completed")}</span></ListGroupItem>
                     <ListGroupItem className="border-0 ms-3 d-flex justify-content-between"><li className="ut-purple"><span>Not Completed</span></li><span>{amountInCategory(task, "Not Completed")}</span></ListGroupItem>
-                    <ListGroupItem className="border-0 ms-3 d-flex justify-content-between"><li className="ut-blue"><span>In Progress</span></li><span>{amountInCategory(task, "In Progress")}</span></ListGroupItem>
                     <ListGroupItem className="border-0 ms-3 d-flex justify-content-between"><li className="ut-red"><span>Trashed</span></li><span>{amountInCategory(task, "Trash")}</span></ListGroupItem>
                 </ListGroup>
             </Card>

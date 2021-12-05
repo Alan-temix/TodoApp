@@ -1,4 +1,3 @@
-
 import { useState, useContext } from 'react';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -18,11 +17,11 @@ const CustomToggle = ({ children, eventKey }) => {
     }
 
     const decoratedOnClick = useAccordionButton(eventKey, handleTextInBotton);
-  
+    
     return (
         <Button className="border-0" style={{backgroundColor: "#ad1eeb"}} onClick={decoratedOnClick}>{textInBotton} {textInBotton === "Add" ? <FontAwesomeIcon icon={faPlus} /> : ""} {children}</Button>
     );
-  }
+}
   
 const AddToDo = () => {
     const { createNewTask } = useContext(ToDoListContext);
@@ -45,6 +44,7 @@ const AddToDo = () => {
         } else {
             setMessage("");
             createNewTask(textInput)
+            e.target[0].value = "";
         }
     }
 
