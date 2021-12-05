@@ -6,7 +6,7 @@ const ToDoListContext = createContext();
 const ToDoListProvider = ({children}) => {
     // const [task, setTask] = useState(listaTodo);
     const [task, setTask] = useState([]);
-    let index = task.length > 0 ? Object.values(task).length + 1 : 0
+    let index = task.length > 0 ? Object.values(task).length + 1 : 1
     // console.log(task);
 
     useEffect(() => {
@@ -19,7 +19,7 @@ const ToDoListProvider = ({children}) => {
 
     useEffect(() => {
         localStorage.setItem("todoList", JSON.stringify(task));
-      }, [task]);    
+      }, [task]);
 
     const createNewTask = (t) => {
         // Codigo para crear nuevas tareas
