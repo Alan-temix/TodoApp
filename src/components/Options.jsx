@@ -8,8 +8,11 @@ const Options = ({changeType}) => {
     const { task } = useContext(ToDoListContext);
     
     const amountInCategory = (arr, param) => {
-        const result = arr.filter(task => task.status === param);
-        return result.length;
+        if(arr?.length > -1) {
+            const result = arr.filter(task => task.status === param);
+            return result.length;
+        }
+        return 0;
     }
 
     return(
@@ -31,7 +34,7 @@ const Options = ({changeType}) => {
                     <Card.Title>Roadmap</Card.Title>
                 </Card.Body>
                 <ListGroup className="list-group-flush">
-                    <ListGroupItem className="border-0 d-flex justify-content-between"><h6>All</h6><span>{task.length}</span></ListGroupItem><hr className="my-0" />
+                    <ListGroupItem className="border-0 d-flex justify-content-between"><h6>All</h6><span>{task?.length > 0 ? task.length : 0}</span></ListGroupItem><hr className="my-0" />
                     <ListGroupItem className="border-0 ms-3 d-flex justify-content-between"><li className="ut-green"><span>Completed</span></li><span>{amountInCategory(task, "Completed")}</span></ListGroupItem>
                     <ListGroupItem className="border-0 ms-3 d-flex justify-content-between"><li className="ut-purple"><span>Not Completed</span></li><span>{amountInCategory(task, "Not Completed")}</span></ListGroupItem>
                     <ListGroupItem className="border-0 ms-3 d-flex justify-content-between"><li className="ut-red"><span>Trashed</span></li><span>{amountInCategory(task, "Trash")}</span></ListGroupItem>

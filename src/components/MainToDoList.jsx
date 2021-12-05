@@ -7,7 +7,8 @@ import ToDoListContext from '../context/ToDoListContext';
 
 const MainToDoList = ({type}) => {
     const { task, changeStatusOnTask, deleteTask } = useContext(ToDoListContext);
-    const showList = type === "All" ? (task.filter(current => current.status !== "Trash")) : (task.filter((current) => current.status === type));
+    console.log(type, task)
+    const showList = type === "All" ? (task?.filter(current => current.status !== "Trash")) : (task?.filter((current) => current.status === type));
 
     const showMessage = (type) => {
         switch (type) {
@@ -32,7 +33,7 @@ const MainToDoList = ({type}) => {
         <Card.Header className="text-start"><h3>{type}</h3></Card.Header>
         <Card.Body>
             {   
-                showList.length > 0 ? (
+                showList?.length > 0 ? (
                 showList.sort((a, b) => {
                     if(a.id === b.id) {
                         return 0;

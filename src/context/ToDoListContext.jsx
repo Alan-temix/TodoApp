@@ -1,13 +1,9 @@
 import React, {useState, useEffect, createContext } from 'react';
-// import listaTodo from '../listaTodo';
 
 const ToDoListContext = createContext();
 
 const ToDoListProvider = ({children}) => {
-    // const [task, setTask] = useState(listaTodo);
     const [task, setTask] = useState([]);
-    let index = task.length > 0 ? Object.values(task).length + 1 : 1
-    // console.log(task);
 
     useEffect(() => {
         if(JSON.parse(localStorage.getItem("todoList"))) {
@@ -18,8 +14,13 @@ const ToDoListProvider = ({children}) => {
     }, []);
 
     useEffect(() => {
+        if(task === undefined) {
+            setTask([]);
+        }
         localStorage.setItem("todoList", JSON.stringify(task));
-      }, [task]);
+    }, [task]);
+
+    let index = task && task.length >= 0 ? Object.values(task).length + 1 : 0
 
     const createNewTask = (t) => {
         // Codigo para crear nuevas tareas
